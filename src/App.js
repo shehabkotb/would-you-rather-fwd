@@ -9,15 +9,12 @@ import LoginPage from './components/Login'
 import HomePage from './components/HomePage'
 import RedirectAuthedRoute from './components/RedirectAuthedRoute'
 import QuestionView from './components/QuestionView'
+import NewQuestion from './components/NewQuestion'
+import LeaderBoard from './components/LeaderBoard'
+import NotFoundPage from './components/NotFoundPage'
 
 function App() {
-  //login
-  //home with answered and unanswered questions tabs
-  //poll for each question, with state answered or not with diffrent components
-  //new questions
-  //leaderboard
   const dispatch = useDispatch()
-  // const loading = useSelector((state) => state.loadingBar.default)
   const authedUser = useSelector((state) => state.authedUser)
 
   useEffect(() => {
@@ -39,10 +36,25 @@ function App() {
           component={QuestionView}
         />
         <ProtectedRoute
+          authedUser={authedUser}
+          path="/add"
+          component={NewQuestion}
+        />
+        <ProtectedRoute
+          authedUser={authedUser}
+          path="/leaderboard"
+          component={LeaderBoard}
+        />
+        <ProtectedRoute
           exact
           authedUser={authedUser}
           path="/"
           component={HomePage}
+        />
+        <ProtectedRoute
+          authedUser={authedUser}
+          path="*"
+          component={NotFoundPage}
         />
       </Switch>
     </>

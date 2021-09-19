@@ -6,7 +6,13 @@ const ProtectedRoute = ({ authedUser, component: Component, ...rest }) => {
     <Route
       {...rest}
       render={({ location }) =>
-        authedUser ? <Component /> : <Redirect to="/login" />
+        authedUser ? (
+          <Component />
+        ) : (
+          <Redirect
+            to={{ pathname: '/login', state: { from: location.pathname } }}
+          />
+        )
       }
     />
   )

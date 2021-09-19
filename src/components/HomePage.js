@@ -42,14 +42,19 @@ const HomePage = () => {
         </Tabs>
       </Box>
       <TabPanel components="div" value={value} index={0}>
-        {Object.keys(questions).map((id) => {
-          return <QuestionOverviewCard questionId={id} key={id} />
-        })}
+        {Object.keys(questions)
+          .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+          .map((id) => {
+            if (id in users[authedUser].answers) return null
+            return <QuestionOverviewCard questionId={id} key={id} />
+          })}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        {Object.keys(users[authedUser].answers).map((id) => {
-          return <QuestionOverviewCard questionId={id} key={id} />
-        })}
+        {Object.keys(users[authedUser].answers)
+          .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+          .map((id) => {
+            return <QuestionOverviewCard questionId={id} key={id} />
+          })}
       </TabPanel>
     </Box>
   )

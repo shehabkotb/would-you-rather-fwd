@@ -18,12 +18,9 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux'
 import { formatQuestion } from '../utils/formatQuestion'
-import { useParams } from 'react-router'
 import { answerQuestion } from '../actions/questions'
 
-const QuestionAnswer = () => {
-  const { questionId } = useParams()
-
+const QuestionAnswer = ({ questionId }) => {
   const question = useSelector((state) => formatQuestion(state, questionId))
   const authedUser = useSelector((state) => state.authedUser)
 
@@ -36,7 +33,6 @@ const QuestionAnswer = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    debugger
     dispatch(
       answerQuestion({
         authedUser: authedUser,

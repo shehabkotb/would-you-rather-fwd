@@ -2,7 +2,6 @@ import React from 'react'
 
 import {
   Avatar,
-  Badge,
   Card,
   CardContent,
   CardHeader,
@@ -16,7 +15,6 @@ import {
 
 import { useSelector } from 'react-redux'
 import { formatQuestion } from '../utils/formatQuestion'
-import { useParams } from 'react-router'
 
 const calcQuestionVotesCount = (question) => {
   return {
@@ -26,9 +24,7 @@ const calcQuestionVotesCount = (question) => {
   }
 }
 
-const QuestionResult = () => {
-  const { questionId } = useParams()
-
+const QuestionResult = ({ questionId }) => {
   const question = useSelector((state) => formatQuestion(state, questionId))
   const user = useSelector((state) => state.users[state.authedUser])
 
@@ -55,14 +51,6 @@ const QuestionResult = () => {
               <Typography variant="h6" sx={{ mb: 1 }}>
                 Results:
               </Typography>
-              {/* <Badge
-                color="secondary"
-                variant="string"
-                overlap="rectangular"
-                badgeContent="Voted"
-                anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
-              >
-                  </Badge> */}
               <Paper
                 sx={{
                   p: 2,
@@ -81,10 +69,11 @@ const QuestionResult = () => {
                     (votesCount.optionOne / votesCount.total) * 100
                   )}
                 />
-                <Typography
-                  variant="subtitle1"
-                  align="center"
-                >{`${votesCount.optionOne} out of ${votesCount.total} votes`}</Typography>
+                <Typography variant="subtitle1" align="center">{`${
+                  votesCount.optionOne
+                } out of ${votesCount.total} votes (${Math.round(
+                  (votesCount.optionOne / votesCount.total) * 100
+                )})%`}</Typography>
               </Paper>
               <Paper
                 sx={{
@@ -104,10 +93,11 @@ const QuestionResult = () => {
                     (votesCount.optionTwo / votesCount.total) * 100
                   )}
                 />
-                <Typography
-                  variant="subtitle1"
-                  align="center"
-                >{`${votesCount.optionTwo} out of ${votesCount.total} votes`}</Typography>
+                <Typography variant="subtitle1" align="center">{`${
+                  votesCount.optionTwo
+                } out of ${votesCount.total} votes (${Math.round(
+                  (votesCount.optionTwo / votesCount.total) * 100
+                )})%`}</Typography>
               </Paper>
             </Stack>
           </Grid>

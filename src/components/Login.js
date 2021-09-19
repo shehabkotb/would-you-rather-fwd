@@ -17,13 +17,11 @@ import {
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router'
 import { setAuthedUser } from '../actions/authedUser'
 
 const LoginPage = (props) => {
   const users = useSelector((state) => state.users)
   const dispatch = useDispatch()
-  const history = useHistory()
 
   const [selectedUser, setSelectedUser] = useState('')
 

@@ -9,7 +9,7 @@ export default function questions(state = {}, action) {
     case RECEIVE_QUESTIONS:
       return { ...action.questions }
     case ADD_QUESTION:
-      return { ...state, ...action.question }
+      return { ...state, [action.question.id]: { ...action.question } }
     case UPDATE_QUESTION_VOTES:
       return {
         ...state,

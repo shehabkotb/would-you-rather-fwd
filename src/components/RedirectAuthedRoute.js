@@ -6,7 +6,13 @@ const RedirectAuthedRoute = ({ authedUser, component: Component, ...rest }) => {
     <Route
       {...rest}
       render={({ location }) =>
-        authedUser ? <Redirect to="/" /> : <Component />
+        authedUser ? (
+          <Redirect
+            to={{ pathname: location.state ? location.state.from : '/' }}
+          />
+        ) : (
+          <Component />
+        )
       }
     />
   )
