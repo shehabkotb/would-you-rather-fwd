@@ -9,6 +9,10 @@ You can run the project if you have node installed on your machine.
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
 
+## Demo
+
+https://user-images.githubusercontent.com/30159212/133942376-fb0cf0ea-10d3-4a29-9ecf-77def71fc79c.mp4
+
 ## Backend Server
 
 The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
