@@ -1,21 +1,15 @@
-import { createTheme } from '@material-ui/core/styles'
+import { createTheme } from '@mui/material/styles'
 
 // A custom theme for this app
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#556cd6'
+      main: '#1a237e'
     },
     secondary: {
-      main: '#19857b'
+      main: '#ff5252'
     }
   }
 })
-
-// let colorPref = "dark"
-
-// const setColorPref = (pref) => {
-//  if(pref === "dark")
-// }
 
 export default theme
